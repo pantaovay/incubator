@@ -63,7 +63,7 @@ class Curl extends Request
 
     public function headerFunction($ch, $headerLine)
     {
-        $this->responseHeader = $headerLine;
+        $this->responseHeader .= $headerLine;
 
         return strlen($headerLine);
     }
@@ -115,6 +115,8 @@ class Curl extends Request
             }
             $header[] = 'Expect:';
         }
+
+        $this->responseHeader = '';
 
         $this->setOption(CURLOPT_HEADERFUNCTION, [$this, 'headerFunction']);
         $this->setOption(CURLOPT_HTTPHEADER, $header);
