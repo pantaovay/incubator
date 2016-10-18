@@ -129,9 +129,9 @@ class Curl extends Request
         $response->header->parse($this->responseHeader);
 
         if ($fullResponse) {
-            $response->body = $this->responseHeader . $content;
-        } else {
             $response->body = $content;
+        } else {
+            $response->body = substr($content, strlen($this->responseHeader));
         }
 
         return $response;
