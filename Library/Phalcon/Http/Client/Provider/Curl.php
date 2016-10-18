@@ -63,7 +63,7 @@ class Curl extends Request
 
     public function headerFunction($ch, $headerLine)
     {
-        $this->responseHeader .= $headerLine;
+        $this->responseHeader = $headerLine;
 
         return strlen($headerLine);
     }
